@@ -1,6 +1,8 @@
 import { FC, useState, ChangeEvent, FormEvent } from 'react';
 import './style.scss';
 import { ISearchBarProps } from './types';
+import { getCity } from "../../../../redux/actions/cityAction";
+import { useDispatch, useSelector } from 'react-redux';
 
 const SearchBar: FC<ISearchBarProps> = ({ city, searchCity }) => {
     const [value, setValue] = useState(city);
@@ -10,11 +12,14 @@ const SearchBar: FC<ISearchBarProps> = ({ city, searchCity }) => {
         setValue(target.value);
     };
 
+    const dispatch = useDispatch()
+
     const handleFormSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         value === '' ? alert('City can not be empty') : searchCity(value);
+        getCity(value)(dispatch);
     };
-// filter (item =>item.timezone.trim().tolowe().includes(value.trim().toLowerCase()))
+
     return ( 
         
         <div className='searchbar' style={{height: (( city ) && (city ? '30vh' : '100vh'))}}>

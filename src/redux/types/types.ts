@@ -1,5 +1,5 @@
 import { WEATHER_ACTIONS } from "../actions/consts";
-import { IWeatherData } from "../interfaces/interface";
+import { IWeatherData } from "../interfaces/weatherInterface";
 
 export interface LoadWeather {
     type: WEATHER_ACTIONS.GET_WEATHER,

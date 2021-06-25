@@ -1,4 +1,4 @@
-import { FC, useEffect } from 'react';
+import { FC, useEffect, useState } from 'react';
 import WeatherBody from '../WeatherBody';
 import './style.scss';
 import { IWeatherContainerProps } from './types';
@@ -7,21 +7,30 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getWeather } from '../../../../redux/actions/weatherAction';
 
 
-export const WeatherContainer: FC<IWeatherContainerProps> = ({ city }) => {
-    const dispatch = useDispatch()
-    const weather = useSelector((state:any) => state)
+interface ICity {
+    city: {data: {}}
+}
+interface IWeather {
+    weather: {data: {}}
+}
+const WeatherContainer = () => {
+    const dispatch = useDispatch();
+    const {data: weather}:any = useSelector((state: IWeather) => state.weather);
+    const [cityValue, setCityValue] = useState('');
+    const {data: city}:any = useSelector((state:ICity) => state.city)
 
-    useEffect(() => {
-        getWeather(40,40,'monthly')(dispatch) 
-    }, [ ])
+    const searchCity = async (city: string) => {
+        setCityValue(city);
+    }
+    // console.log(weather)
 
-    console.log(weather)
-    console.log(weather.weather)
     return (
         <div className='weather-container'>
-            {city && <h5 className='cityName'>{city}</h5>}
-
-
+            <ul>
+                <li onClick={()=>console.log(weather)
+                }>{city?.name}</li>
+                <li>{weather?.lat}</li>
+            </ul>
         </div>
     );
 };

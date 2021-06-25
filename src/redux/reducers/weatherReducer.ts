@@ -1,5 +1,5 @@
 import { WEATHER_ACTIONS } from "../actions/consts";
-import { IWeatherData } from "../interfaces/interface";
+import { IWeatherData } from "../interfaces/weatherInterface";
 import { ASYNC_STATUS } from "../store/consts";
 import { WeatherAction } from "../types/types";
 

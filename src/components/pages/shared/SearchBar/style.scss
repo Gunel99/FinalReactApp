@@ -26,10 +26,10 @@
   .SearchBarChilds .formSearchCity {
     display: flex;
   }
-  @media (min-width: 1399px) {
-    & {
-      width: ((city) && (city && "30%": "100%"));
-    }
-    height: 100vh;
-  }
+  // @media (min-width: 1399px) {
+  //   & {
+  //     width: ((city) && (city && "30%": "100%"));
+  //   }
+  //   height: 100vh;
+  // }
 }
